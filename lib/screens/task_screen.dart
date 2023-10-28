@@ -43,21 +43,25 @@ class _TaskScreenState extends State<TaskScreen> {
                       },
                     child: const Text('Save'),
                   ),
-                  Consumer<TaskProvider>(builder: (context, TaskProvider taskProvider, child) {
-                    return ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: taskProvider.tasks.length,
-                      itemBuilder: (context, index) {
-                        return ListTile(
-                          title: Text(taskProvider.tasks[index].name),
-                          trailing: IconButton(
-                            icon: const Icon(Icons.delete),
-                            onPressed: () => Provider.of<TaskProvider>(context, listen: false).removeTask(taskProvider.tasks[index])
-                          ),
+                  Expanded(
+                    child: Consumer<TaskProvider>(
+                      builder: (context, TaskProvider taskProvider, child) {
+                        return ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: taskProvider.tasks.length,
+                          itemBuilder: (context, index) {
+                            return ListTile(
+                              title: Text(taskProvider.tasks[index].name),
+                              trailing: IconButton(
+                                icon: const Icon(Icons.delete),
+                                onPressed: () => Provider.of<TaskProvider>(context, listen: false).removeTask(taskProvider.tasks[index])
+                              ),
+                            );
+                          },
                         );
                       },
-                    );
-                  },),
+                    ),
+                  ),
                 ],
               ),
               )
