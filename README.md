@@ -9,8 +9,8 @@ A new Flutter project.
 - Exercício: Aplicativo de Tarefas com Provider 1 Exercício: Aplicativo de Tarefas com Provider
 
 # Setup
-´´´
+```
 - Clone this repository
 - Run `flutter pub get`
 - Run `flutter run`
-´´´
+```
