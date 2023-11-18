@@ -3,17 +3,21 @@ import 'package:flutter/material.dart';
 import '../models/task.dart';
 
 class TaskProvider extends ChangeNotifier {
-  List<Task> _tasks = [];
+  List<Task> tasks = [];
 
-  List<Task> get tasks => _tasks;
-
+  TaskProvider({required this.tasks});
   void addTask(Task task) {
-    _tasks.add(task);
+    tasks.add(task);
     notifyListeners();
   }
 
   void removeTask(Task task) {
-    _tasks.remove(task);
+    tasks.remove(task);
+    notifyListeners();
+  }
+
+  void toggleTask(Task task) {
+    task.concluido = !task.concluido;
     notifyListeners();
   }
 }
