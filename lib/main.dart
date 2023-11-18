@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:learning_flutter2/models/task.dart';
 import 'package:learning_flutter2/provider/task_provider.dart';
+import 'package:learning_flutter2/screens/form_screen.dart';
 import 'package:learning_flutter2/screens/task_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:learning_flutter2/provider/counter_provider.dart';
@@ -16,8 +18,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => TaskProvider()),],
+        ChangeNotifierProvider(create: (context) {
+          return TaskProvider(tasks: [Task(name: 'test', id: '123', concluido: false)]);
+        })],
       child: MaterialApp(
+        routes: {
+          '/': (context) => const TaskScreen(),
+          '/form': (context) => const FormScreen(),
+        },
         title: 'Flutter Demo',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSwatch(
@@ -26,7 +34,6 @@ class MyApp extends StatelessWidget {
             secondary: Colors.amber,
           ),
         ),
-        home: TaskScreen(),
       ),
     );
   }
