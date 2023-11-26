@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:learning_flutter2/models/task.dart';
 import 'package:learning_flutter2/provider/task_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:uuid/uuid.dart';
+
 class FormScreen extends StatefulWidget {
   const FormScreen({super.key});
 
@@ -39,6 +39,7 @@ class _FormScreenState extends State<FormScreen> {
               Padding(
                 padding: const EdgeInsets.all(4.0),
                 child: TextFormField(
+                  key: const Key('NameKey1'),
                   keyboardType: TextInputType.name,
                   controller: nameController,
                   decoration: const InputDecoration(
@@ -57,7 +58,7 @@ class _FormScreenState extends State<FormScreen> {
                     ),
                     onPressed: () {
                       Provider.of<TaskProvider>(context, listen: false).addTask(
-                        Task(name: nameController.text, id: const Uuid().v4(), concluido: false),
+                        Task(name: nameController.text, concluido: false),
                       );
                       nameController.clear();
                       ScaffoldMessenger.of(context).showSnackBar(
