@@ -37,7 +37,7 @@ class _FormScreenState extends State<FormScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(4.0),
                 child: TextFormField(
                   keyboardType: TextInputType.name,
                   controller: nameController,
